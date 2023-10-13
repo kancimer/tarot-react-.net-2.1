@@ -1,0 +1,32 @@
+/* Provide sufficient contrast against white background */
+a {
+    color: #9cc1eb;
+}
+
+code {
+  color: #E01A76;
+}
+
+body {
+    font-family: NunitoSans;
+}
+
+.btn-primary {
+    color: #f9faec;
+    background-color: #f9faec;
+    border-color: #1861ac;
+}
+:root {
+    --primary-color: #28282a; /* Your custom primary color */
+    --secondary-color: #9cc1eb; /* Your custom secondary color */
+    --custom-background: #f9faec; /* Your custom background color */
+}
+
+@font-face {
+    font-family: "YoungSerif"; /*Can be any text*/
+    src: local("YoungSerif"), url("./fonts/YoungSerif-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "NunitoSans"; /*Can be any text*/
+    src: local("YoungSerif"), url("./fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf") format("truetype");
+}

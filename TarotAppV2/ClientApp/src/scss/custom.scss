@@ -1,0 +1,11 @@
+﻿// Custom.scss
+// Option A: Include all of Bootstrap
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+$body-bg: #000;
+$body-color: #111;
+$body-font-family:YoungSerif;
+
+    // Bootstrap and its default variables
+    @import "node_modules/bootstrap/scss/bootstrap";

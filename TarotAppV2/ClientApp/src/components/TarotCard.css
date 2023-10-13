@@ -1,0 +1,30 @@
+﻿/* TarotCard.css */
+
+.card {
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.card-content {
+    position: relative;
+    perspective: 1000px;
+}
+
+.front {
+    transform: rotateY(0deg);
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.hidden {
+    display: none;
+}
+h5 {
+font-family:YoungSerif;
+}
+.flipped .card {
+    transform: rotateY(180deg);
+}
