@@ -1,4 +1,4 @@
-﻿import React, { Component, useEffect, useState } from 'react';
+﻿import React, { Component, useEffect, useState, useRef } from 'react';
 import TarotCard from './TarotCard';
 import '../custom.css';
 import TarotCardImg from './TarotCardImages';
@@ -14,6 +14,7 @@ const TarotReading = () => {
     const [data, setData] = useState(null);
     const [numOfCards, setNumOfCards] = useState(3);
     const [userMsg, setUserMsg] = useState("");
+    const scrollRef = useRef(null);
     const greeting = "Welcome to your Tarot reading! Choose a number of cards for your reading.";
     
     function getData() {
@@ -31,7 +32,8 @@ const TarotReading = () => {
                 localStorage.setItem("reading", JSON.stringify(res));
                 console.log(JSON.stringify(res));
                 //setData(JSON.parse(JSON.stringify(res)).map((card) => { <div key={card.id}><h3>{card.name}</h3> </div> }));
-            })
+            });
+       
 
     }
 
@@ -44,40 +46,52 @@ const TarotReading = () => {
                 initial={{ opacity: 0, scale: 0.5, x:500}}
                 animate={{ opacity: 1, scale: 1, x:0 }}
                 transition={{
-                    duration: 1,
-                    delay: 0.2,
+                    duration: 0.5,
+                    delay: 0.1,
                     ease: [0, 0.71, 0.2, 1.01]
                 }}
             >
-            <h3>{greeting}</h3>
+                <h3>{greeting}</h3> </motion.div>
             <Form class="row justify-content-md-center">
                 <Container>
                 
-                    <FormGroup >
-                        <Row>
+                        <FormGroup >
+                            <motion.div
+                                className="box"
+                                initial={{ opacity: 0, scale: 0.5}}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{
+                                    duration: 0.5,
+                                    delay: 0.3,
+                                    ease: [0, 0.71, 0.2, 1.01]
+                                }}
+                            >
+                        <Row> 
                             <Col lg={1} xs={3}>
-                                <Input
+                                   
+                                        <Input
                                     
                                 value={numOfCards}
                                 onChange={e => { if (e.target.value < 78 && e.target.value > 0) { setNumOfCards(e.target.value) } else { alert("Please enter a positive integer that does not exceed number of cards in the deck!"); } }}
                                 type="number"
                                 
-                                />
+                                /> 
                             </Col>
                         
                                     <Col xs={2}>
-                                <Button onClick={getData} >
+                                    <Button onClick={() => { getData(); scrollRef.current.scrollIntoView({ behavior: 'smooth' }); } } >
                                 Generate {numOfCards} Tarot cards
                                     
                                         </Button>
-                                    </Col>
-                                </Row>
+                                </Col>
+                            
+                                </Row></motion.div>
                         </FormGroup>
                     
                 </Container>
                 </Form>
-                </motion.div>
-            {data ? (<div><TarotCard cards={data} /></div>) : (<div><h3>{userMsg}</h3></div>)}
+               
+            {data ? ( <div ref={scrollRef}> <TarotCard cards={data} /> </div> ) : (<div ><h3>{userMsg}</h3></div>)}
 
         </div>
             
