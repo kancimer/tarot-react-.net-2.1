@@ -4,19 +4,21 @@ import '../custom.css';
 import TarotCardImg from './TarotCardImages';
 import { motion } from "framer-motion";
 import './TarotReading.css'; 
+import SpreadCardStack from './SpreadCardStack';
+import backOfCard from './backOfCard.jpg';
 
 import { Button, Input, Form, Row, Col, FormGroup, Container } from 'reactstrap';
-//data ? (data.map((card) => <div><h3>{card.name}</h3> <img id={card.imageId} src={TarotCardImg.find(o => o.id === card.imageId)?.image} /> </div>)) : (<div>{greeting}</div>)
-// startReading?(<div><button onclick="activateLasers()">Activate Lasers</button ></div>):(<div>{readingOptions}</div>)
-//<img id={card.imageId} src={TarotCardImg.find(o => o.id === card.imageId)?.image} /> 
+
 const TarotReading = () => {
     //localStorage.setItem("name",card.name); 
     const [data, setData] = useState(null);
-    const [numOfCards, setNumOfCards] = useState(3);
+    const [numOfCards, setNumOfCards] = useState(0);
     const [userMsg, setUserMsg] = useState("");
     const scrollRef = useRef(null);
     const greeting = "Welcome to your Tarot reading! Choose a number of cards for your reading.";
-    
+    const pickedCards = (num) => {
+        setNumOfCards(num);
+    };
     function getData() {
         setUserMsg("Shuffling cards...");
         fetch(`api/${numOfCards}`)
@@ -28,7 +30,7 @@ const TarotReading = () => {
             .then(res => {
                 //let selectedText = JSON.stringify(res);
                 setData(JSON.parse(JSON.stringify(res)));
-                localStorage.clear();
+                //localStorage.clear();
                 localStorage.setItem("reading", JSON.stringify(res));
                 console.log(JSON.stringify(res));
                 //setData(JSON.parse(JSON.stringify(res)).map((card) => { <div key={card.id}><h3>{card.name}</h3> </div> }));
@@ -41,6 +43,7 @@ const TarotReading = () => {
 
     return (
         <div>
+            
             <motion.div
                 className="box"
                 initial={{ opacity: 0, scale: 0.5, x:500}}
@@ -52,8 +55,8 @@ const TarotReading = () => {
                 }}
             >
                 <h3>{greeting}</h3> </motion.div>
-            <Form class="row justify-content-md-center">
-                <Container>
+            <Form className="row justify-content-md-center">
+                <Container >
                 
                         <FormGroup >
                             <motion.div
@@ -66,7 +69,8 @@ const TarotReading = () => {
                                     ease: [0, 0.71, 0.2, 1.01]
                                 }}
                             >
-                        <Row> 
+                            <Row > 
+                                
                             <Col lg={1} xs={3}>
                                    
                                         <Input
@@ -79,7 +83,10 @@ const TarotReading = () => {
                             </Col>
                         
                                     <Col xs={2}>
-                                    <Button onClick={() => { getData(); scrollRef.current.scrollIntoView({ behavior: 'smooth' }); } } >
+                                    <Button onClick={() => {
+                                        setTimeout(() => {
+                                            getData(); scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+                                        }, 1000);  } } >
                                 Generate {numOfCards} Tarot cards
                                     
                                         </Button>
@@ -89,9 +96,9 @@ const TarotReading = () => {
                         </FormGroup>
                     
                 </Container>
-                </Form>
-               
-            {data ? ( <div ref={scrollRef}> <TarotCard cards={data} /> </div> ) : (<div ><h3>{userMsg}</h3></div>)}
+            </Form>
+            <SpreadCardStack pickedCards={pickedCards} />
+            {data ? (<div ref={scrollRef}> <TarotCard cards={data} /> </div>) : (<h3>{userMsg}</h3>)}
 
         </div>
             

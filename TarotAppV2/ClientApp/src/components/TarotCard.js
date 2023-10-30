@@ -2,7 +2,7 @@
 import TarotCardImg from './TarotCardImages';
 import { Card, CardBody, CardTitle, CardText, Col, Row, Container } from 'reactstrap';
 import './TarotCard.css';
-import backOfCard from './backOfCard.jpg';
+
 import { motion } from "framer-motion";
 
 //<img key={`item-${item.id}`} src={TarotCardImg.find(o => o.id === item.imageId)?.image} />
@@ -15,7 +15,7 @@ const TarotCard = (props) => {
                 <div class="col col-lg-3" key={`item-${item.id}`}>
                     <Col>
                         <motion.div
-                            className="box"
+                            
                             initial={{ opacity: 0, scale: 0.5 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{
@@ -25,7 +25,7 @@ const TarotCard = (props) => {
                                 type: "spring"
                             }}
                         >
-                            <Card classname="card" outline="true" color="light"  >
+                            <Card className="tarotcard"  color="light"  >
                                 <CardBody>
 
                                     <img key={`item-${item.id}`} class="w-75 p-2" alt={item.name} src={TarotCardImg.find(o => o.id === item.imageId)?.image} />

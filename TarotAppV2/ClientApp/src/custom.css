@@ -1,27 +1,44 @@
+/**maknuti ovo:*/
+:root {
+    --background: #ffffff;
+    --text-primary: #000;
+    --text-secondary: #8e05c2;
+    --accent: #8e05c2;
+    --border: #333;
+    --form-bg: #fff;
+}
+
+.dark-theme {
+    --background: #000;
+    --text-primary: #fff;
+    --text-secondary: #8e05c2;
+    --accent: #8e05c2;
+    --border: #808080;
+    --form-bg: #191919;
+}
 /* Provide sufficient contrast against white background */
 a {
     color: #9cc1eb;
 }
 
-code {
-  color: #E01A76;
-}
+
 
 body {
     font-family: NunitoSans;
+    color: text-primary;
+    background-color:form-bg;
 }
-
+/*
 .btn-primary {
     color: #f9faec;
     background-color: #f9faec;
     border-color: #1861ac;
 }
 :root {
-    --primary-color: #28282a; /* Your custom primary color */
-    --secondary-color: #9cc1eb; /* Your custom secondary color */
-    --custom-background: #f9faec; /* Your custom background color */
-}
-
+    --primary-color: #28282a; 
+    --secondary-color: #9cc1eb;
+    --custom-background: #f9faec; 
+*/
 @font-face {
     font-family: "YoungSerif"; /*Can be any text*/
     src: local("YoungSerif"), url("./fonts/YoungSerif-Regular.ttf") format("truetype");

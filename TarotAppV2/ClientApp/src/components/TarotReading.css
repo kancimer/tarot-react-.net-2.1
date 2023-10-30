@@ -1,4 +1,7 @@
 ﻿body {
+    background-color: bg-color;
+    color: form-bg;
+    color:text-primary;
 }
 h3 {
     margin-top:150px;

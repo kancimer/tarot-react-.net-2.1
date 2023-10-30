@@ -25,6 +25,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\DarkThemeContext.js" />
+    <None Remove="ClientApp\src\components\DarkThemeSwitch.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ClientApp\src\images\" />
   </ItemGroup>
 
