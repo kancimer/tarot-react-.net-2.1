@@ -8,10 +8,7 @@ import TarotReading from "./components/TarotReading";
 
 
 const AppRoutes = [
-  {
-    index: true,
-    element: <Home />
-  },
+  
   {
     path: '/counter',
     element: <Counter />
@@ -21,7 +18,7 @@ const AppRoutes = [
     element: <FetchData />
     },
     {
-        path: '/tarot-reading',
+        index: true,
         element: <TarotReading />
     },
     {

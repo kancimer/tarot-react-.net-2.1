@@ -14,7 +14,7 @@ const TarotReading = () => {
     const [data, setData] = useState(null);
     const [isReadingOnDisplay, setIsReadingOnDisplay] = useState(false);
     const [numOfCards, setNumOfCards] = useState(0);
-    const [userMsg, setUserMsg] = useState("");
+    
     const scrollRef = useRef(null);
     const greeting = "Welcome to your Tarot reading! Click on a card to select and click again to deselect.";
     const pickedCards = (num) => {
@@ -23,7 +23,7 @@ const TarotReading = () => {
 
     
     function getData() {
-        setUserMsg("Shuffling cards...");
+        
         fetch(`api/${numOfCards}`)
             .then((results) => {
                 //return results.json();
@@ -95,7 +95,7 @@ const TarotReading = () => {
                 </Container>
             </Form>
             {isReadingOnDisplay ? (<Button onClick={() => { setIsReadingOnDisplay(false); }}>Another reading</Button>) : (<SpreadCardStack pickedCards={pickedCards} />)}
-            {data && isReadingOnDisplay ? (<div ref={scrollRef}> <TarotCard cards={data} /> </div>) : (<div ref={scrollRef}><h3>{userMsg}</h3></div>)}
+            {data && isReadingOnDisplay ? (<div ref={scrollRef}> <TarotCard cards={data} /> </div>) : (<div ref={scrollRef}></div>)}
 
         </div>
             
