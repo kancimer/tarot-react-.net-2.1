@@ -11,6 +11,7 @@
     margin-right: -100px; /* Adjust the overlap value as needed */
     z-index: 1; /* Ensure cards overlap correctly */
     border: #E8E9EA 5px;
+    border-radius:5px;
     box-shadow: -0.5rem .15rem rgba(0, 0, 0, 0.3);
     --s: 10px; /* control the size */
     --b: 5px; /* control the thickness of the curved lines */
@@ -33,7 +34,7 @@
 }
 
 .backOfCard.moved {
-    margin: 300px 0 10px; /* Adjust the margins for selected cards */
+    margin: 300px 0px 0px 0px; /* Adjust the margins for selected cards */
     z-index: -1;
     /* Move the moved card to the top */
 }

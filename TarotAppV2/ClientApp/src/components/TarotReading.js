@@ -7,18 +7,21 @@ import './TarotReading.css';
 import SpreadCardStack from './SpreadCardStack';
 import backOfCard from './backOfCard.jpg';
 
-import { Button, Input, Form, Row, Col, FormGroup, Container } from 'reactstrap';
+import { Button, Form, Row, Col, FormGroup, Container } from 'reactstrap';
 
 const TarotReading = () => {
     //localStorage.setItem("name",card.name); 
     const [data, setData] = useState(null);
+    const [isReadingOnDisplay, setIsReadingOnDisplay] = useState(false);
     const [numOfCards, setNumOfCards] = useState(0);
     const [userMsg, setUserMsg] = useState("");
     const scrollRef = useRef(null);
-    const greeting = "Welcome to your Tarot reading! Choose a number of cards for your reading.";
+    const greeting = "Welcome to your Tarot reading! Click on a card to select and click again to deselect.";
     const pickedCards = (num) => {
         setNumOfCards(num);
     };
+
+    
     function getData() {
         setUserMsg("Shuffling cards...");
         fetch(`api/${numOfCards}`)
@@ -71,25 +74,19 @@ const TarotReading = () => {
                             >
                             <Row > 
                                 
-                            <Col lg={1} xs={3}>
-                                   
-                                        <Input
-                                    
-                                value={numOfCards}
-                                onChange={e => { if (e.target.value < 78 && e.target.value > 0) { setNumOfCards(e.target.value) } else { alert("Please enter a positive integer that does not exceed number of cards in the deck!"); } }}
-                                type="number"
-                                
-                                /> 
-                            </Col>
+                           
+                           
                         
                                     <Col xs={2}>
-                                    <Button onClick={() => {
+                                    {!isReadingOnDisplay ? (<Button onClick={() => {
                                         setTimeout(() => {
+                                            setIsReadingOnDisplay(true);
                                             getData(); scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-                                        }, 1000);  } } >
-                                Generate {numOfCards} Tarot cards
-                                    
-                                        </Button>
+                                        }, 50);
+                                    }} >
+                                        Generate {numOfCards} Tarot cards
+
+                                    </Button>) : ("")}
                                 </Col>
                             
                                 </Row></motion.div>
@@ -97,8 +94,8 @@ const TarotReading = () => {
                     
                 </Container>
             </Form>
-            <SpreadCardStack pickedCards={pickedCards} />
-            {data ? (<div ref={scrollRef}> <TarotCard cards={data} /> </div>) : (<h3>{userMsg}</h3>)}
+            {isReadingOnDisplay ? (<Button onClick={() => { setIsReadingOnDisplay(false); }}>Another reading</Button>) : (<SpreadCardStack pickedCards={pickedCards} />)}
+            {data && isReadingOnDisplay ? (<div ref={scrollRef}> <TarotCard cards={data} /> </div>) : (<div ref={scrollRef}><h3>{userMsg}</h3></div>)}
 
         </div>
             
