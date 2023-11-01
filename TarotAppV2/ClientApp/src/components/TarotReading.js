@@ -1,16 +1,13 @@
-﻿import React, { Component, useEffect, useState, useRef } from 'react';
+﻿import React, { useState, useRef } from 'react';
 import TarotCard from './TarotCard';
 import '../custom.css';
-import TarotCardImg from './TarotCardImages';
+
 import { motion } from "framer-motion";
 import './TarotReading.css'; 
 import SpreadCardStack from './SpreadCardStack';
-import backOfCard from './backOfCard.jpg';
-
-import { Button, Form, Row, Col, FormGroup, Container } from 'reactstrap';
+import { Button, Row, Col } from 'reactstrap';
 
 const TarotReading = () => {
-    //localStorage.setItem("name",card.name); 
     const [data, setData] = useState(null);
     const [isReadingOnDisplay, setIsReadingOnDisplay] = useState(false);
     const [numOfCards, setNumOfCards] = useState(0);
@@ -27,17 +24,17 @@ const TarotReading = () => {
         
             fetch(`api/${numOfCards}`)
                 .then((results) => {
-                    //return results.json();
+                    
                     return results.json();
-                    //return JSON.parse(results);
+                    
                 })
                 .then(res => {
-                    //let selectedText = JSON.stringify(res);
+                    
                     setData(JSON.parse(JSON.stringify(res)));
-                    //localStorage.clear();
+                    
                     localStorage.setItem("reading", JSON.stringify(res));
                     console.log(JSON.stringify(res));
-                    //setData(JSON.parse(JSON.stringify(res)).map((card) => { <div key={card.id}><h3>{card.name}</h3> </div> }));
+                   
                 });
         
         
@@ -61,10 +58,7 @@ const TarotReading = () => {
                 }}
             >
                 <p>{greeting}</p> </motion.div>
-            <Form className="row justify-content-md-center">
-                <Container >
-                
-                        <FormGroup >
+            
                             <motion.div
                                 className="box"
                                 initial={{ opacity: 0, scale: 0.5}}
@@ -97,10 +91,7 @@ const TarotReading = () => {
                                 </Col>
                             
                                 </Row></motion.div>
-                        </FormGroup>
-                    
-                </Container>
-            </Form>
+           
             {isReadingOnDisplay ? (<Button onClick={() => {  setIsReadingOnDisplay(false); } }>Another reading</Button>) : (<SpreadCardStack pickedCards={pickedCards} />)}
             {data && isReadingOnDisplay ? (<div ref={scrollRef}> <TarotCard cards={data} /> </div>) : (<div ref={scrollRef}></div>)}
 

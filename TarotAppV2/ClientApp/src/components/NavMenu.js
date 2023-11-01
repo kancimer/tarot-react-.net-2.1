@@ -1,12 +1,9 @@
-import React, { Component, useState } from 'react';
-import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Form, FormGroup, Label, Input } from 'reactstrap';
+import React from 'react';
+import {  Navbar, NavbarBrand, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
 
-const context = [
-    "/weatherforecast",
-    "/tarot",
-];
+
 const NavMenu = () => {
     
     return (

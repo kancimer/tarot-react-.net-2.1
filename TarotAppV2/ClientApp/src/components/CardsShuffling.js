@@ -1,5 +1,5 @@
 ﻿import React, { useState, useEffect } from 'react';
-import backOfCard from './backOfCard.jpg';
+
 import './shuffleAnimation.css'; 
 const CardsShuffling = () => {
 	<div class="stack">

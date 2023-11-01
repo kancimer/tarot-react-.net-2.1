@@ -28,17 +28,7 @@ body {
     color: text-primary;
     background-color:form-bg;
 }
-/*
-.btn-primary {
-    color: #f9faec;
-    background-color: #f9faec;
-    border-color: #1861ac;
-}
-:root {
-    --primary-color: #28282a; 
-    --secondary-color: #9cc1eb;
-    --custom-background: #f9faec; 
-*/
+
 @font-face {
     font-family: "YoungSerif"; /*Can be any text*/
     src: local("YoungSerif"), url("./fonts/YoungSerif-Regular.ttf") format("truetype");
