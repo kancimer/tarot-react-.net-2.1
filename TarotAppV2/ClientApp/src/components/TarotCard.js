@@ -10,7 +10,7 @@ const TarotCard = (props) => {
    
         setTimeout(() => {
             setIsFlipped(true);
-        }, 1000);
+        }, 300);
        
     
 
@@ -33,7 +33,7 @@ const TarotCard = (props) => {
                                 animate={{ opacity: 1, scale: 1, x: 0 }}
                                 transition={{
                                     duration: 0.5,
-                                    delay: 1,
+                                    delay: 0.6,
                                     ease: [0, 0.71, 0.2, 1.01]
                                 }}
                             ><h5>{item.name}</h5><p>{item.description}</p></motion.div>

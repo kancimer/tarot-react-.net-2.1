@@ -19,25 +19,28 @@ const TarotReading = () => {
     const greeting = "Welcome to your Tarot reading! Click on a card to select and click again to deselect.";
     const pickedCards = (num) => {
         setNumOfCards(num);
+        
     };
-
+   
     
     function getData() {
         
-        fetch(`api/${numOfCards}`)
-            .then((results) => {
-                //return results.json();
-                return results.json();
-                //return JSON.parse(results);
-            })
-            .then(res => {
-                //let selectedText = JSON.stringify(res);
-                setData(JSON.parse(JSON.stringify(res)));
-                //localStorage.clear();
-                localStorage.setItem("reading", JSON.stringify(res));
-                console.log(JSON.stringify(res));
-                //setData(JSON.parse(JSON.stringify(res)).map((card) => { <div key={card.id}><h3>{card.name}</h3> </div> }));
-            });
+            fetch(`api/${numOfCards}`)
+                .then((results) => {
+                    //return results.json();
+                    return results.json();
+                    //return JSON.parse(results);
+                })
+                .then(res => {
+                    //let selectedText = JSON.stringify(res);
+                    setData(JSON.parse(JSON.stringify(res)));
+                    //localStorage.clear();
+                    localStorage.setItem("reading", JSON.stringify(res));
+                    console.log(JSON.stringify(res));
+                    //setData(JSON.parse(JSON.stringify(res)).map((card) => { <div key={card.id}><h3>{card.name}</h3> </div> }));
+                });
+        
+        
        
 
     }
@@ -57,7 +60,7 @@ const TarotReading = () => {
                     ease: [0, 0.71, 0.2, 1.01]
                 }}
             >
-                <h3>{greeting}</h3> </motion.div>
+                <p>{greeting}</p> </motion.div>
             <Form className="row justify-content-md-center">
                 <Container >
                 
@@ -79,10 +82,14 @@ const TarotReading = () => {
                         
                                     <Col xs={2}>
                                     {!isReadingOnDisplay ? (<Button onClick={() => {
-                                        setTimeout(() => {
-                                            setIsReadingOnDisplay(true);
-                                            getData(); scrollRef.current.scrollIntoView({ behavior: 'smooth' });
-                                        }, 50);
+                                        if (numOfCards > 0 && numOfCards < 20) {
+                                            setTimeout(() => {
+                                                setIsReadingOnDisplay(true);
+                                                getData(); scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+                                            }, 50);
+                                        } else {
+                                            alert("Number of cards must be a positive integer!");
+                                        }
                                     }} >
                                         Generate {numOfCards} Tarot cards
 
@@ -94,7 +101,7 @@ const TarotReading = () => {
                     
                 </Container>
             </Form>
-            {isReadingOnDisplay ? (<Button onClick={() => { setIsReadingOnDisplay(false); }}>Another reading</Button>) : (<SpreadCardStack pickedCards={pickedCards} />)}
+            {isReadingOnDisplay ? (<Button onClick={() => {  setIsReadingOnDisplay(false); } }>Another reading</Button>) : (<SpreadCardStack pickedCards={pickedCards} />)}
             {data && isReadingOnDisplay ? (<div ref={scrollRef}> <TarotCard cards={data} /> </div>) : (<div ref={scrollRef}></div>)}
 
         </div>
