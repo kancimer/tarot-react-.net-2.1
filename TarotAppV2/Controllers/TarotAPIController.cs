@@ -112,7 +112,7 @@ namespace TarotAppV2.Controllers
             }
             
             return outputTarotCards;
-            //return 
+         
         }
     }
 }

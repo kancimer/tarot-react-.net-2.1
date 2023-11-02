@@ -1,21 +1,4 @@
-/**maknuti ovo:*/
-:root {
-    --background: #ffffff;
-    --text-primary: #000;
-    --text-secondary: #8e05c2;
-    --accent: #8e05c2;
-    --border: #333;
-    --form-bg: #fff;
-}
 
-.dark-theme {
-    --background: #000;
-    --text-primary: #fff;
-    --text-secondary: #8e05c2;
-    --accent: #8e05c2;
-    --border: #808080;
-    --form-bg: #191919;
-}
 /* Provide sufficient contrast against white background */
 a {
     color: #9cc1eb;
@@ -23,11 +6,11 @@ a {
 
 
 
-body {
+/*body {
     font-family: NunitoSans;
     color: text-primary;
     background-color:form-bg;
-}
+}*/
 
 @font-face {
     font-family: "YoungSerif"; /*Can be any text*/
@@ -35,5 +18,44 @@ body {
 }
 @font-face {
     font-family: "NunitoSans"; /*Can be any text*/
-    src: local("YoungSerif"), url("./fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf") format("truetype");
+    src: local("NunitoSans"), url("./fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf") format("truetype");
 }
+@font-face {
+    font-family: "Metropolis"; /*Can be any text*/
+    src: local("Metropolis"), url("./fonts/Metropolis-Light.ttf") format("truetype");
+}
+/**background: font-family: NunitoSans; background-color: #0e2036;*/
+body {
+    font-family: Metropolis;
+    
+    color: white;
+   
+    font-style: normal;
+    font-weight: 100;
+    background: linear-gradient(-45deg, #0e2036, #1c2a3b, #11171f, #141e2b);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+p {
+    color:white;
+    font-family:Metropolis;
+}
+h1, h2, h3, h4, h5, h6 {
+    color:white;
+    font-family:YoungSerif;
+}
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+

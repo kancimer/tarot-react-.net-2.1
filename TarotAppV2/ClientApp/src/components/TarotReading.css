@@ -1,8 +1,14 @@
-﻿body {
-    background-color: bg-color;
-    color: form-bg;
-    color:text-primary;
+﻿.greeting {
+    margin-top: 5em;
+    font-size: 1.5em;
+    text-align:center;
 }
-h3 {
-    margin-top:150px;
+button {
+    padding: 3em 1em;
+    color: white;
+    background-color: black;
+    width:50%;
 }
+    button:hover {
+        background-color:black;
+    }

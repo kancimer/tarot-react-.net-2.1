@@ -23,7 +23,7 @@ const SpreadCardStack = ({ pickedCards }) => {
     }, [selectedCards, pickedCards]);
 
     return (
-        <div className="backOfCard-container">
+        <div className=" col col-lg-12 backOfCard-container">
             {[...Array(cardCount)].map((_, index) => (
                 <motion.div
                     className="backOfCardMotion"

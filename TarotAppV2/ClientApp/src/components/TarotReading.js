@@ -45,7 +45,7 @@ const TarotReading = () => {
 
 
     return (
-        <div>
+        <div  >
             
             <motion.div
                 className="box"
@@ -57,7 +57,7 @@ const TarotReading = () => {
                     ease: [0, 0.71, 0.2, 1.01]
                 }}
             >
-                <p>{greeting}</p> </motion.div>
+                <p className="greeting">{greeting}</p> </motion.div>
             
                             <motion.div
                                 className="box"
@@ -74,8 +74,8 @@ const TarotReading = () => {
                            
                            
                         
-                                    <Col xs={2}>
-                                    {!isReadingOnDisplay ? (<Button onClick={() => {
+                    <Col className="row justify-content-center" >
+                        {!isReadingOnDisplay ? (<Button className="col col-lg-2 py-3 " onClick={() => {
                                         if (numOfCards > 0 && numOfCards < 20) {
                                             setTimeout(() => {
                                                 setIsReadingOnDisplay(true);
@@ -92,8 +92,8 @@ const TarotReading = () => {
                             
                                 </Row></motion.div>
            
-            {isReadingOnDisplay ? (<Button onClick={() => {  setIsReadingOnDisplay(false); } }>Another reading</Button>) : (<SpreadCardStack pickedCards={pickedCards} />)}
-            {data && isReadingOnDisplay ? (<div ref={scrollRef}> <TarotCard cards={data} /> </div>) : (<div ref={scrollRef}></div>)}
+            {isReadingOnDisplay ? (<div class="row justify-content-md-center"><Button className="col col-lg-2 py-3 " onClick={() => { setIsReadingOnDisplay(false); }}>Another reading</Button></div>) : (<SpreadCardStack className="row justify-content-md-center" pickedCards={pickedCards} />)}
+            {data && isReadingOnDisplay ? (<div class="row justify-content-md-center"  ref={scrollRef}> <TarotCard className="" cards={data} /> </div>) : (<div ref={scrollRef}></div>)}
 
         </div>
             
