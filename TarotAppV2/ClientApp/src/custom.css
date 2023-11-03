@@ -27,9 +27,7 @@ a {
 /**background: font-family: NunitoSans; background-color: #0e2036;*/
 body {
     font-family: Metropolis;
-    
-    color: white;
-   
+    color: #dbd8bf;
     font-style: normal;
     font-weight: 100;
     background: linear-gradient(-45deg, #0e2036, #1c2a3b, #11171f, #141e2b);
@@ -38,12 +36,12 @@ body {
     height: 100vh;
 }
 p {
-    color:white;
-    font-family:Metropolis;
+    color: #dbd8bf;
+    font-family: Metropolis;
 }
 h1, h2, h3, h4, h5, h6 {
-    color:white;
-    font-family:YoungSerif;
+    color: #dbd8bf;
+    font-family: YoungSerif;
 }
 @keyframes gradient {
     0% {

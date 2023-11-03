@@ -3,12 +3,13 @@
     font-size: 1.5em;
     text-align:center;
 }
-button {
-    padding: 3em 1em;
-    color: white;
-    background-color: black;
-    width:50%;
+.btn {
+    background-color: #0e2036 !important;
+    border-color: #dbd8bf !important;
+    color: #dbd8bf !important;
+    font-family: Metropolis !important;
 }
-    button:hover {
-        background-color:black;
+    .btn:hover {
+        background-color: #dbd8bf !important;
+        color: #0e2036 !important;
     }

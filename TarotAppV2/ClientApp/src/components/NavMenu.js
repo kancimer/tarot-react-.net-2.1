@@ -7,8 +7,8 @@ import './NavMenu.css';
 const NavMenu = () => {
     
     return (
-        <header>
-            <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3 fixed-top-lg" container light>
+        <header >
+            <Navbar className="navbar-expand-sm navbar-toggleable-sm  border-bottom box-shadow mb-3 fixed-top-lg navStyle" container>
                 <NavbarBrand className="brand" tag={Link} to="/">Simple Tarot App</NavbarBrand>
                 <ul className="navbar-nav flex-grow">
                    
