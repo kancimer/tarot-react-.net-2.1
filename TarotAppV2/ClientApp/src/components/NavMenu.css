@@ -38,6 +38,7 @@ a.navbar-brand {
 navStyle {
     background-color: #bfb35a !important;
     color: #162e40 !important;
+    font-family: Cormorant;
 }
 html {
     font-size: 14px;

@@ -34,7 +34,11 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\components\backOfCard.jpg" />
+    <None Remove="ClientApp\src\components\CardFlip.css" />
     <None Remove="ClientApp\src\components\CardsShuffling.js" />
+    <None Remove="ClientApp\src\components\CloudAnimation.css" />
+    <None Remove="ClientApp\src\components\CloudAnimation.js" />
+    <None Remove="ClientApp\src\components\cloudSmoke.scss" />
     <None Remove="ClientApp\src\components\Counter.js" />
     <None Remove="ClientApp\src\components\DarkThemeContext.js" />
     <None Remove="ClientApp\src\components\DarkThemeSwitch.js" />
