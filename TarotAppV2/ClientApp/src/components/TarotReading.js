@@ -4,20 +4,23 @@ import '../custom.css';
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from "framer-motion";
 import './TarotReading.css'; 
-import SpreadCardStack from './SpreadCardStack';
+//import SpreadCardStack from './SpreadCardStack';
 //import CardFlip from './CardFlip';
 import { Button, Row, Col } from 'reactstrap';
-//import TarotSelector from './TarotSelector';
+
 import StarryBackground from './StarryBackground';
-//import CandleAnimation from './CandleAnimation';
-//dodati exit animation za nebo da ide prema gore a od dolje je podlozak sa tarot kartama i svijecom
+import CardsSlide from './CardsSlide';
+
 const TarotReading = () => {
     const [data, setData] = useState(null);
     const [isReadingOnDisplay, setIsReadingOnDisplay] = useState(false);
     const [numOfCards, setNumOfCards] = useState(1);
     const [animateBackground, setAnimateBackground] = useState(false);
     const scrollRef = useRef(null);
-    const greeting = "Welcome to your Tarot reading! Click on a card to select and click again to deselect.";
+    
+
+
+    const styleAnimation = ` ${isReadingOnDisplay ? 'display-reading' : 'dont-display'}`;
     const pickedCards = (num) => {
         setNumOfCards(num);
         
@@ -33,10 +36,12 @@ const TarotReading = () => {
    );
     function readingRequested() {
         setAnimateBackground(true);
+        //setData(null);
         setTimeout(() => {
             setAnimateBackground(false);
+            getData();
         }, "2500");
-        getData();
+        
     }
 
     function getData() {
@@ -66,10 +71,10 @@ const TarotReading = () => {
             <div className="container">
             < motion.div
                 
-                initial={{ opacity: 0.5, y: 200 }
+                initial={{ opacity: 0.5, y: 400 }
                 }
                 animate={{
-                    opacity: 1, y:0}}
+                    opacity: 1, y:100}}
                 transition={{
                     duration: 0.7,
                     delay: 0.8,
@@ -88,9 +93,9 @@ const TarotReading = () => {
            </div>
             < motion.div
                 className="box"
-                initial={{  y: 500 }
+                initial={{ opacity:0, y: 500 }
                 }
-                animate={{ y: 0 }}
+                animate={{ y: 250, opacity: 1 }}
                 transition={{
                     duration: 0.7,
                     delay: 1.5,
@@ -98,11 +103,11 @@ const TarotReading = () => {
                 }}
             ><Row className="justify-content-center">
                     <Col xs="12" className="d-flex justify-content-center">
-                        {isReadingOnDisplay ? (<div><button onClick={() => { setIsReadingOnDisplay(!isReadingOnDisplay); }}> Back
-                        </button> </div>) : (<div><button className="btn" onClick={() => { readingRequested(); setIsReadingOnDisplay(!isReadingOnDisplay); }}>
+                        {isReadingOnDisplay ? (<div><button className="btn" onClick={() => { setIsReadingOnDisplay(!isReadingOnDisplay); }}> Back
+                        </button> </div>) : (<div><button className="btn" onClick={() => { setData(null); console.log(data); readingRequested(); setIsReadingOnDisplay(!isReadingOnDisplay); }}>
                        Get my reading
                         </button></div>)}
-                        {data && isReadingOnDisplay ? (<div class="row justify-content-md-center" ref={scrollRef}> <TarotCard className="" cards={data} /> </div>) : (<div ref={scrollRef}></div>)}
+                        {data && isReadingOnDisplay ? (<div className="row justify-content-md-center" ref={scrollRef}> <CardsSlide /> <TarotCard ref={scrollRef}  className={styleAnimation } cards={data} /> </div>) : (<div ref={scrollRef}></div>)}
                 </Col>
                 </Row></motion.div>
     </div>

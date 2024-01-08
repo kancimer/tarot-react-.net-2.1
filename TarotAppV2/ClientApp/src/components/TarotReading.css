@@ -51,3 +51,11 @@ color:white;
 .backgroundSetting {
     z-index:-1;
 }
+
+.display-reading {
+   
+}
+
+.dont-display {
+    display:none;
+}
