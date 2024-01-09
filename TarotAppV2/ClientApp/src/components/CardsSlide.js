@@ -4,7 +4,7 @@ import './CardsSlide.css';
 
 //const symbols = ["♣", "♠", "♥", "♦"];
 
-const CardsSlide = () => {
+const CardsSlide = (props) => {
     const tableRef = useRef(null);
     let cardWidth = 100,
         cardHeight = 150,
@@ -69,8 +69,11 @@ const CardsSlide = () => {
            table.appendChild(card);
 
            card.addEventListener('click', () => {
+               
                table.removeChild(card);
-               //clickCard(true);
+               props.clickCard(true);
+               
+               console.log('Caedslide cklicked!');
            });
 
             return card;

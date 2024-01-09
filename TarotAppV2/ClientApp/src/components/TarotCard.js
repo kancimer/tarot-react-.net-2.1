@@ -18,11 +18,11 @@ const TarotCard = (props) => {
         <div>
             <Row className="row justify-content-md-center">
                 {props.cards.map((item) => (
-                    <div className="col col-lg-3 " key={`item-${item.id}`} >
+                    <div className="d-flex col col-lg-3 " key={`item-${item.id}`} >
                         <Col>
                             
-                            <div className="scene scene--tarotcard">
-                                <div className= {`tarotcard ${isFlipped ? 'is-flipped' : ''}`}>
+                            <div className="d-flex  scene scene--tarotcard">
+                                <div className={`tarotcard ${isFlipped ? 'is-flipped' : ''}`}>
                                     <div className="tarotcard__face tarotcard__face--front"></div>
                                     <div className="tarotcard__face tarotcard__face--back"><img className="tarotimg" alt={item.name} src={TarotCardImg.find(o => o.id === item.imageId)?.image} /></div>
                                 </div>
@@ -36,7 +36,7 @@ const TarotCard = (props) => {
                                     delay: 0.6,
                                     ease: [0, 0.71, 0.2, 1.01]
                                 }}
-                            ><h5>{item.name}</h5><p>{item.description}</p></motion.div>
+                            ><h5 className="d-flex justify-content-center">{item.name}</h5><p className="d-flex justify-content-center">{item.description}</p></motion.div>
                         </Col>
                     </div>
                 ))}
