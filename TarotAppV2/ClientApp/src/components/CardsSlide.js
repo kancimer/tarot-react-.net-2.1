@@ -2,43 +2,36 @@
 import gsap, { Power2 } from 'gsap';
 import './CardsSlide.css';
 
-//const symbols = ["♣", "♠", "♥", "♦"];
 
 const CardsSlide = (props) => {
     const tableRef = useRef(null);
     let cardWidth = 100,
         cardHeight = 150,
-        cardCount = 1,
+        
         startingHands = 0;
-
+    
     useEffect(() => {
+       
         const table = tableRef.current;
-
         const start = () => {
-            if (startingHands < 3) {
+            if (startingHands < 5) {
                 startingHands++;
                 draw();
                 setTimeout(start, 1000);
             }
         };
-/*
-        const bindEvents = () => {
-            window.addEventListener('click', () => {
-                draw();
-            });
-        };
-        */
+
         const draw = () => {
             let tl = gsap.timeline(),
                 position = getTableCenter(),
                 card = addCard();
 
-            cardCount++;
+            
 
             gsap.set(card, {
                 y: -table.offsetHeight,
                 x: table.offsetWidth / 2,
-                zIndex: cardCount,
+                zIndex: 'auto',
             });
 
             let offsetX = table.offsetWidth * 0.5,
@@ -73,7 +66,7 @@ const CardsSlide = (props) => {
                table.removeChild(card);
                props.clickCard(true);
                
-               console.log('Caedslide cklicked!');
+               console.log('Cardslide clicked!');
            });
 
             return card;
@@ -86,15 +79,32 @@ const CardsSlide = (props) => {
         };*/
 
         const getTableCenter = () => {
+            const centerY = (table.offsetTop + table.offsetHeight / 2) + cardHeight;//- (cardHeight / 2), matematicki ali bolje bez
+            const centerX = (table.offsetLeft + table.offsetWidth / 2) - cardWidth;//dodala
+            const variation = 200; // You can adjust this value for the desired y-axis variation
+            const randomY = centerY + getRandom(-variation, variation);
+            const randomX = centerX + getRandom(-2 * variation, -variation/2);//dodala
+            //console.log("x i y centra:",centerX, centerY);
             return {
-                x: (table.offsetLeft + table.offsetWidth / 2) - (cardWidth / 2),
-                y: (table.offsetTop + table.offsetHeight / 2) - (cardHeight / 2),
+                x: randomX,//(table.offsetLeft + table.offsetWidth / 2) - (cardWidth / 2),
+                y: randomY,
             };
         };
 
+
         const getRandom = (min, max = null) => {
             let realMax = (max === null ? min * 2 : max);
-            return min + Math.random() * (realMax - min);
+            //let realMax = (max === null ? min * 2 : max);//unchanged
+            let randomValue = min + Math.random() * (realMax - min);
+            //return min + Math.random() * (realMax - min);
+            // Ensure the card position is within the visible area of the table
+            if (randomValue < 0) {
+                return 0;
+            } else if (randomValue > realMax) {
+                return realMax;
+            } else {
+                return randomValue;
+            }
         };
 
         //bindEvents();
@@ -112,7 +122,3 @@ const CardsSlide = (props) => {
 };
 
 export default CardsSlide;
-
-        /**<div className="card card--sample">
-                    <span className="card__symbol card__symbol--heart">♣</span>
-                </div> */

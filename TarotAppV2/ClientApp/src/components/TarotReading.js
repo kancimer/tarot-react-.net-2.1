@@ -7,7 +7,7 @@ import './TarotReading.css';
 //import SpreadCardStack from './SpreadCardStack';
 //import CardFlip from './CardFlip';
 import { Button, Row, Col } from 'reactstrap';
-
+//overlay popraviti i plijesan, gumbe dolje centrirati
 import StarryBackground from './StarryBackground';
 import CardsSlide from './CardsSlide';
 
@@ -24,9 +24,11 @@ const TarotReading = () => {
         setIsCardClicked(value);
         
         getData();
-        
+        setTimeout(() => {
+            scrollToCard();
+        }, 500);
         //console.log("clicked!");
-        scrollToCard();
+       
     };
     //const styleAnimation = ` ${isCardClicked ? 'display-reading' : 'dont-display'}`;
     //const styleAnimation = `'dont-display'`;
@@ -43,13 +45,22 @@ const TarotReading = () => {
             className="backgroundSetting"
         />
     );
-    const scrollToCard = () => {
+    /*const scrollToCard = () => {
         let card = document.getElementById('tarot-card');
         card.scrollIntoView();
-    }
+        scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }*/
+    const scrollToCard = () => {
+        // If the TarotCard has an ID, use it; otherwise, replace 'tarot-card' with the appropriate ID
+        const card = document.getElementById('tarot-card-btn') || document.querySelector('.cardslide');
+
+        if (card) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    };
     function readingRequested() {
         setData(null);
-        setIsReadingRequested(!isReadingRequested);
+        setIsReadingRequested(true);
         //setIsCardClicked(false);
         setAnimateBackground(true);
         //setData(null);
@@ -100,7 +111,7 @@ const TarotReading = () => {
             ><Row>
 
 
-                        <Col className="d-flex justify-content-center flex-column align-items-center" > <h1 >Simple Tarot App</h1> </Col>
+                        <Col className="d-flex justify-content-center flex-column align-items-center" > <h1>Simple Tarot App</h1> </Col>
 
                 </Row>
                 
@@ -131,7 +142,34 @@ const TarotReading = () => {
                 </Row></motion.div>
             <div className="justify-content-center">
                 {cardsDisplayed ? (<div className="justify-content-md-center">
-                    <div style={{ position: 'relative', marginTop: '10%' }}> {!data && <CardsSlide className="backgroundSetting" clickCard={updateIsCardClicked} />}</div>  {data && < TarotCard id="tarot-card" style={{ display: "none" }} cards={data} />}</div>) : (<div></div>)}
+                    <div style={{ position: 'relative', marginTop: '10%' }}>
+                        {!data && <CardsSlide className="backgroundSetting cardslide" clickCard={updateIsCardClicked} />}</div>
+                    {data && <div>< TarotCard id="tarot-card" style={{ display: "none" }} cards={data} />
+                        < motion.div
+                            className="box"
+                            initial={{ opacity: 0 }
+                            }
+                            animate={{ opacity: 1 }}
+                            transition={{
+                                duration: 0.5,
+                                delay: 0,
+                                ease: [0, 0.71, 0.2, 1.01]
+                            }}
+                        > <Row className="justify-content-center" id="tarot-card-btn" >
+                                <Col xs="12" className="d-flex justify-content-center"><button className="btn" onClick={() => {
+                                    setData(null); getData(); setTimeout(() => {
+                                        scrollToCard();
+                                    }, 500);
+                        }}>
+                            Another reading
+                        </button>
+                                    <button className="text-left btn" onClick={() => {
+                            setData(null); setCardsDisplayed(false); setIsCardClicked(false); setIsReadingRequested(false);
+                        }}>
+                            Back
+                                </button></Col>
+                            </Row></motion.div>
+                    </div>}</div>) : (<div></div>)}
                 
          
                 </div>  

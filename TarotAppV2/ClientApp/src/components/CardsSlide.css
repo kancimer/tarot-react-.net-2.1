@@ -22,7 +22,7 @@ body {
     justify-content: center;
     perspective: 800px;
     transform-style: preserve-3d;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
     #frame > p {
@@ -36,7 +36,8 @@ body {
         text-align: center;
         user-select: none;
         text-shadow: 0 0 2px rgba(100, 100, 100, 0.5);
-        z-index: 3;
+        z-index: 5!important;
+        overflow: visible;
     }
 
 #table {
@@ -50,26 +51,27 @@ body {
 }
 
 .card {
-    position: relative;
-    /*prije bilo absolute*/
+    position: absolute;
+    /*prije bilo absolute
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;*/
     width: 100px; /* Change these values to match your desired card dimensions */
     height: 150px; /* Change these values to match your desired card dimensions */
     border-radius: 10px;
     /*background: #f9f9f9;*/
     background-image: url("../backOfCard.JPG");
-    background-size:100px 150px ;
+    background-size: 100px 150px;
     box-shadow: 1px 1px 5px 1px rgba(150, 150, 150, 0.15);
     animation: card-opacity-animation 2.5s linear;
-    transition:0.5s;
-    z-index:-1;
+    transition: 0.5s;
+    z-index: auto;
+    /*prije bilo -1*/
 }
     .card:hover {
-        transform: scale(1.2);
-        box-shadow: 10px 10px 5px white;
         
+        box-shadow: 10px 10px 5px white;
+        z-index: auto;
     }
 .card__symbol {
     font-size: 60px;

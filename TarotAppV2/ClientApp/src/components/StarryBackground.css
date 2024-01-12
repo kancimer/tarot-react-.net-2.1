@@ -133,6 +133,17 @@
     }
 }
 
+
+.star {
+    background: hsla(0, 100%, 100%);
+    border-radius: 50%;
+    position: absolute;
+}
+
+    .star.hovered {
+        box-shadow: 0 0 10px white;
+        transition: box-shadow 0.3s ease-in-out;
+    }
 /**
         .star-field .layer:nth-child(1) {
             animation-play-state: paused;

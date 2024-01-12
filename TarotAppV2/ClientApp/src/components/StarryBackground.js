@@ -1,12 +1,12 @@
-﻿import React, { useRef, useEffect, memo } from 'react';
+﻿import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import * as dat from 'dat.gui';
 import './StarryBackground.css';
 const StarryBackground = ({
     densityRatio = 1.7,
-    sizeLimit = 0.05,
-    defaultAlpha = 0.5,
-    scaleLimit = 2.2,
+    sizeLimit = 2,
+    defaultAlpha = 0.1,
+    scaleLimit = 1,
     proximityRatio = 0.27,
     isAnimationActive = false,
 }) => {
@@ -43,7 +43,7 @@ const StarryBackground = ({
             starsRef.current = new Array(STAR_COUNT).fill().map(() => ({
                 x: gsap.utils.random(0, window.innerWidth, 1),
                 y: gsap.utils.random(0, window.innerHeight, 1),
-                size: gsap.utils.random(0.02, sizeLimit, 1),
+                size: gsap.utils.random(1, sizeLimit, 1), //ide od 0.002 do sizeLimit po inkrementima od 1
                 scale: 1,
                 alpha: defaultAlpha,
             }));
@@ -54,7 +54,7 @@ const StarryBackground = ({
             starsRef.current.forEach(star => {
                 contextRef.current.fillStyle = `hsla(0, 100%, 100%)`;
                 contextRef.current.beginPath();
-                contextRef.current.arc(star.x, star.y, (star.size / 2) * star.scale, 0, Math.PI * 2);
+                contextRef.current.arc(star.x, star.y, (star.size / 10) * star.scale, 0, Math.PI * 2);//prije bilo 2 ne 10
                 contextRef.current.fill();
                 //console.log('Rendered');
             });
@@ -66,6 +66,13 @@ const StarryBackground = ({
                 gsap.to(STAR, {
                     scale: scaleMapperRef.current(Math.min(DISTANCE, vminRef.current * proximityRatio)),
                     alpha: alphaMapperRef.current(Math.min(DISTANCE, vminRef.current * proximityRatio)),
+                });
+            });
+            starsRef.current.forEach(STAR => {
+                gsap.to(STAR, {
+                    duration: 3,
+                    boxShadow: '10px 10px 5px white',
+                    repeat: -1
                 });
             });
         };

@@ -22,8 +22,9 @@
     display: inline-block; /* Display as inline block */
 }
 
-
-   
+h1 {
+    z-index: 999999 !important;
+}
 
     .btn:hover {
         
@@ -52,11 +53,14 @@ z-index:999;
 }
 
 .backgroundSetting {
-    z-index:-1;
+    z-index: -1;
+    position: relative;
 }
+/*.cardslide {
+    height:400px!important;
 
+}*/
 .display-reading {
-   
 }
 
 .dont-display {

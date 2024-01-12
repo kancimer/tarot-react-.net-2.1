@@ -24,13 +24,13 @@ const TarotCard = (props) => {
                             <div className="d-flex  scene scene--tarotcard">
                                 <div className={`tarotcard ${isFlipped ? 'is-flipped' : ''}`}>
                                     <div className="tarotcard__face tarotcard__face--front"></div>
-                                    <div className="tarotcard__face tarotcard__face--back"><img className="tarotimg" alt={item.name} src={TarotCardImg.find(o => o.id === item.imageId)?.image} /></div>
+                                    <div className="tarotcard__face tarotcard__face--back"><img className="tarotimg d-flex justify-content-center" alt={item.name} src={TarotCardImg.find(o => o.id === item.imageId)?.image} /></div>
                                 </div>
                                 </div>
                             <motion.div
                                 className="box"
-                                initial={{ opacity: 0, scale: 0.5, x: 500 }}
-                                animate={{ opacity: 1, scale: 1, x: 0 }}
+                                initial={{ opacity: 0, scale: 0.5}}
+                                animate={{ opacity: 1, scale: 1 }}
                                 transition={{
                                     duration: 0.5,
                                     delay: 0.6,
