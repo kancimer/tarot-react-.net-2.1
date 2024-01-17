@@ -7,11 +7,11 @@ const CardsSlide = (props) => {
     const tableRef = useRef(null);
     let cardWidth = 100,
         cardHeight = 150,
-        
+
         startingHands = 0;
-    
+
     useEffect(() => {
-       
+
         const table = tableRef.current;
         const start = () => {
             if (startingHands < 5) {
@@ -26,7 +26,7 @@ const CardsSlide = (props) => {
                 position = getTableCenter(),
                 card = addCard();
 
-            
+
 
             gsap.set(card, {
                 y: -table.offsetHeight,
@@ -41,7 +41,8 @@ const CardsSlide = (props) => {
                 .to(card, {
                     duration: 1.5,
                     ease: Power2.easeOut,
-                    x: position.x + getRandom(-offsetX, offsetX),
+                    //malo promijeniti x
+                    x: startingHands * 150,
                     y: position.y + getRandom(-offsetY, offsetY),
                 }, 'start')
                 .to(card, {
@@ -51,28 +52,28 @@ const CardsSlide = (props) => {
                 }, 'start');
         };
 
-       const addCard = () => {
+        const addCard = () => {
             let card = document.createElement('div');
             card.className = 'card';
             //let span = document.createElement('span');
             //span.className = 'card__symbol' + (Math.random() >= 0.5 ? ' card__symbol--red' : '');
-           //span.className = 'card';
+            //span.className = 'card';
             //span.appendChild(document.createTextNode(getRandomSymbol()));
             //card.appendChild(span);
-           table.appendChild(card);
+            table.appendChild(card);
 
-           card.addEventListener('click', () => {
-               
-               table.removeChild(card);
-               props.clickCard(true);
-               
-               console.log('Cardslide clicked!');
-           });
+            card.addEventListener('click', () => {
+
+                table.removeChild(card);
+                props.clickCard(true);
+
+                console.log('Cardslide clicked!');
+            });
 
             return card;
         };
 
-        
+
 
         /*const getRandomSymbol = () => {
             return symbols[Math.floor(Math.random() * symbols.length)];
@@ -81,9 +82,9 @@ const CardsSlide = (props) => {
         const getTableCenter = () => {
             const centerY = (table.offsetTop + table.offsetHeight / 2) + cardHeight;//- (cardHeight / 2), matematicki ali bolje bez
             const centerX = (table.offsetLeft + table.offsetWidth / 2) - cardWidth;//dodala
-            const variation = 200; // You can adjust this value for the desired y-axis variation
+            const variation = 10; // You can adjust this value for the desired y-axis variation
             const randomY = centerY + getRandom(-variation, variation);
-            const randomX = centerX + getRandom(-2 * variation, -variation/2);//dodala
+            const randomX = centerX + getRandom(-2 * variation, -variation / 2);//dodala
             //console.log("x i y centra:",centerX, centerY);
             return {
                 x: randomX,//(table.offsetLeft + table.offsetWidth / 2) - (cardWidth / 2),
@@ -115,7 +116,7 @@ const CardsSlide = (props) => {
         <div id="frame">
             <p>Click on a card to see what the future holds!</p>
             <div id="table" ref={tableRef}>
-                
+
             </div>
         </div>
     );

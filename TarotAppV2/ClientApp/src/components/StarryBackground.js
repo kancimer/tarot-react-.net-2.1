@@ -52,9 +52,11 @@ const StarryBackground = ({
         const RENDER = () => {
             contextRef.current.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
             starsRef.current.forEach(star => {
-                contextRef.current.fillStyle = `hsla(0, 100%, 100%)`;
+                contextRef.current.fillStyle = `hsla(225, 62%, 43%)`;//hsla(0, 100%, 100%)
                 contextRef.current.beginPath();
                 contextRef.current.arc(star.x, star.y, (star.size / 10) * star.scale, 0, Math.PI * 2);//prije bilo 2 ne 10
+                //contextRef.current.style.boxShadow = `10px 10px lightblue`;
+                canvasRef.current.classList.add('glow');
                 contextRef.current.fill();
                 //console.log('Rendered');
             });

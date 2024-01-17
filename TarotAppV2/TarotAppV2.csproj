@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\About.js" />
     <None Remove="ClientApp\src\components\backOfCard.jpg" />
     <None Remove="ClientApp\src\components\CardFlip.css" />
     <None Remove="ClientApp\src\components\CardsShuffling.js" />

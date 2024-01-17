@@ -26,10 +26,9 @@ h1 {
     z-index: 999999 !important;
 }
 
-    .btn:hover {
-        
-        color: black;
-    }
+.btn:hover {
+    text-shadow: 0 0 3px white;
+}
     .btn:active {
         border:none;
     }
