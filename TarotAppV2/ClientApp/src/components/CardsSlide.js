@@ -34,8 +34,7 @@ const CardsSlide = (props) => {
                 zIndex: 'auto',
             });
 
-            let offsetX = table.offsetWidth * 0.5,
-                offsetY = table.offsetHeight * 0.5;
+            let offsetY = table.offsetHeight * 0.5;
 
             tl.addLabel('start')
                 .to(card, {
@@ -55,11 +54,6 @@ const CardsSlide = (props) => {
         const addCard = () => {
             let card = document.createElement('div');
             card.className = 'card';
-            //let span = document.createElement('span');
-            //span.className = 'card__symbol' + (Math.random() >= 0.5 ? ' card__symbol--red' : '');
-            //span.className = 'card';
-            //span.appendChild(document.createTextNode(getRandomSymbol()));
-            //card.appendChild(span);
             table.appendChild(card);
 
             card.addEventListener('click', () => {
@@ -75,9 +69,7 @@ const CardsSlide = (props) => {
 
 
 
-        /*const getRandomSymbol = () => {
-            return symbols[Math.floor(Math.random() * symbols.length)];
-        };*/
+
 
         const getTableCenter = () => {
             const centerY = (table.offsetTop + table.offsetHeight / 2) + cardHeight;//- (cardHeight / 2), matematicki ali bolje bez

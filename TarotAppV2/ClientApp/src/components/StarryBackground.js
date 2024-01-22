@@ -1,6 +1,6 @@
 ﻿import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
-import * as dat from 'dat.gui';
+//import * as dat from 'dat.gui';
 import './StarryBackground.css';
 const StarryBackground = ({
     densityRatio = 1.7,
@@ -18,21 +18,11 @@ const StarryBackground = ({
     const alphaMapperRef = useRef(null);
 
     const styleAnimation = `star-field ${isAnimationActive ? 'animate' : ''}`;
-    //const styleAnimationCanvas = `{isAnimationActive ? 'animate-canvas' : 'canvas-style'}`;
     const styleAnimationCanvas = isAnimationActive ? 'animate-canvas' : 'canvas-style';
 
     useEffect(() => {
         contextRef.current = canvasRef.current.getContext('2d');
-        /*
-        const starField = document.querySelector('.star-field');
-        if (starField) {
-            if (isAnimationActive) {
-                starField.classList.add('animate');
-            } else {
-                starField.classList.remove('animate');
-            }
-        }
-        */
+       
         const LOAD = () => {
             vminRef.current = Math.min(window.innerHeight, window.innerWidth);
             const STAR_COUNT = Math.floor(vminRef.current * densityRatio);
@@ -56,7 +46,7 @@ const StarryBackground = ({
                 contextRef.current.beginPath();
                 contextRef.current.arc(star.x, star.y, (star.size / 10) * star.scale, 0, Math.PI * 2);//prije bilo 2 ne 10
                 //contextRef.current.style.boxShadow = `10px 10px lightblue`;
-                canvasRef.current.classList.add('glow');
+                //canvasRef.current.classList.add('glow');
                 contextRef.current.fill();
                 //console.log('Rendered');
             });

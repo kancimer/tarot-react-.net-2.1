@@ -1,13 +1,12 @@
-﻿import React, { useState, useRef } from 'react';
+﻿import React, { useState } from 'react';
 import TarotCard from './TarotCard';
 import '../custom.css';
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { motion } from "framer-motion";
 import './TarotReading.css'; 
-//import SpreadCardStack from './SpreadCardStack';
-//import CardFlip from './CardFlip';
-import { Button, Row, Col } from 'reactstrap';
-//overlay popraviti i plijesan, gumbe dolje centrirati
+
+import { Row, Col } from 'reactstrap';
+
 import StarryBackground from './StarryBackground';
 import CardsSlide from './CardsSlide';
 
@@ -17,7 +16,7 @@ const TarotReading = () => {
     const [isReadingRequested, setIsReadingRequested] = useState(false);
     const [numOfCards, setNumOfCards] = useState(1);
     const [animateBackground, setAnimateBackground] = useState(false);
-    const scrollRef = useRef(null);
+    
     const [isCardClicked, setIsCardClicked] = useState(false);
 
     const updateIsCardClicked = (value) => {
@@ -32,10 +31,7 @@ const TarotReading = () => {
     };
     //const styleAnimation = ` ${isCardClicked ? 'display-reading' : 'dont-display'}`;
     //const styleAnimation = `'dont-display'`;
-    const pickedCards = (num) => {
-        setNumOfCards(num);
-        
-    };
+   
     let starryBackground = (<StarryBackground
             densityRatio={0.75} // Set default values or customize as needed
             sizeLimit={10}
