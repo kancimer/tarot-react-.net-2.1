@@ -30,9 +30,13 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\TarotController.cs" />
+    <Compile Remove="Controllers\WeatherForecastController.cs" />
+    <Compile Remove="WeatherForecast.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\AppRoutes.js" />
+    <None Remove="ClientApp\src\blueGlitterBackground.jpg" />
     <None Remove="ClientApp\src\components\About.js" />
     <None Remove="ClientApp\src\components\backOfCard.jpg" />
     <None Remove="ClientApp\src\components\CandleAnimation.js" />
@@ -43,13 +47,27 @@
     <None Remove="ClientApp\src\components\CloudAnimation.js" />
     <None Remove="ClientApp\src\components\cloudSmoke.scss" />
     <None Remove="ClientApp\src\components\Counter.js" />
+    <None Remove="ClientApp\src\components\customColors.scss" />
     <None Remove="ClientApp\src\components\DarkThemeContext.js" />
     <None Remove="ClientApp\src\components\DarkThemeSwitch.js" />
     <None Remove="ClientApp\src\components\FetchData.js" />
     <None Remove="ClientApp\src\components\Home.js" />
+    <None Remove="ClientApp\src\components\Layout.js" />
+    <None Remove="ClientApp\src\components\NavMenu.css" />
+    <None Remove="ClientApp\src\components\NavMenu.js" />
+    <None Remove="ClientApp\src\components\ReadingHistory.js" />
     <None Remove="ClientApp\src\components\shuffleAnimation.css" />
+    <None Remove="ClientApp\src\components\SpreadCardStack.css" />
+    <None Remove="ClientApp\src\components\SpreadCardStack.js" />
+    <None Remove="ClientApp\src\components\TarotSelector.css" />
+    <None Remove="ClientApp\src\components\TarotSelector.js" />
+    <None Remove="ClientApp\src\fonts\NunitoSans-Italic-VariableFont_YTLC,opsz,wdth,wght.ttf" />
+    <None Remove="ClientApp\src\fonts\NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf" />
+    <None Remove="ClientApp\src\fonts\YoungSerif-Regular.ttf" />
+    <None Remove="ClientApp\src\rm200-aew-66.jpg" />
     <None Remove="ClientApp\src\scss\custom.scss" />
     <None Remove="ClientApp\src\scss\themes.scss" />
+    <None Remove="ClientApp\src\spills-azure-pigment.jpg" />
   </ItemGroup>
 
   <ItemGroup>

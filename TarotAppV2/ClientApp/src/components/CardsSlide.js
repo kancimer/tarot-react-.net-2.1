@@ -100,7 +100,7 @@ const CardsSlide = (props) => {
             }
         };
 
-        //bindEvents();
+        
         start();
     }, []);
 

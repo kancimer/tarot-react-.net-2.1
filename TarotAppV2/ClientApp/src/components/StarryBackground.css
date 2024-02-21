@@ -68,7 +68,7 @@
     z-index: -1;
 }
     .star-field .layer {
-        /* Your existing styles */
+       
         /* This ensures the animation is initially paused */
         animation-play-state: paused;
     }
@@ -144,32 +144,7 @@ box-shadow:10px 10px white;
 }
 
     .star.hovered {
-        /*box-shadow: 0 0 10px white;*/
+        
         box-shadow: 10px 10px white;
         transition: box-shadow 0.3s ease-in-out;
     }
-/**
-        .star-field .layer:nth-child(1) {
-            animation-play-state: paused;
-            animation: sf-fly-by-1 5s linear infinite;
-        }
-
-        .star-field .layer:nth-child(2) {
-            animation-play-state: paused;
-            animation: sf-fly-by-2 5s linear infinite;
-        }
-
-        .star-field .layer:nth-child(3) {
-            animation-play-state: paused;
-            animation: sf-fly-by-3 5s linear infinite;
-        }
-*/
-
-/**.star-field.animate {
-       
-animation-play-state: running;
-}
-
-        animation-play-state: paused;
-
-*/
